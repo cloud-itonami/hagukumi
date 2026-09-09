@@ -30,7 +30,7 @@
   sign each attestation (G14). Compute-only R0; settlement stops at :intent (R1+ broadcasts).
 
   Run:  bb --classpath 20-actors 20-actors/hagukumi/py/agent.clj"
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 ;; ── constants ──────────────────────────────────────────────────────────────────
 (def TITHE_BPS 1000)  ; 10% TitheRouter auto-split (G13), basis points
@@ -84,8 +84,8 @@
 (defn check_mitate_emergency_keywords
   "G5: if any emergency keyword is found in session, trigger mitate XRPC POST."
   [session-description keywords]
-  (let [desc-lower (str/lower-case session-description)
-        hits (filter #(str/includes? desc-lower (str/lower-case %)) keywords)]
+  (let [desc-lower (str/lower session-description)
+        hits (filter #(str/includes? desc-lower (str/lower %)) keywords)]
     (if (seq hits)
       {:escalate true  :matched_keywords (vec hits) :rule "G5"}
       {:escalate false :matched_keywords []          :rule "G5"})))
