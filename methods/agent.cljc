@@ -12,7 +12,8 @@
     G14  no-server-key            member/caregiver/guardian signs attestations
     G15  pii-encrypted-envelope   encryptedPayloadCid + consentRecordCid REQUIRED
     G16  pseudonym-rotation-30d   care-recipient identity rotates every 30 days
-    G17  guardian-consent-child   <14 care-recipient requires guardian DID")
+    G17  guardian-consent-child   <14 care-recipient requires guardian DID"
+  (:require [kotoba.lang.text]))
 
 ;; ── constants ──────────────────────────────────────────────────────────────────
 (def tithe-bps 1000) ;; 10% TitheRouter auto-split (G13), basis points
@@ -25,7 +26,7 @@
   All args are ISO-8601 strings (with or without trailing Z)."
   [consent-timestamp-iso session-start-iso session-end-iso]
   (try
-    (let [norm   #(clojure.string/replace % #"Z$" "+00:00")
+    (let [norm   #(kotoba.lang.text/replace % #"Z$" "+00:00")
           inst   #(java.time.OffsetDateTime/parse (norm %)
                     java.time.format.DateTimeFormatter/ISO_OFFSET_DATE_TIME)
           ct     (inst consent-timestamp-iso)
@@ -54,8 +55,8 @@
 (defn check-mitate-emergency-keywords
   "G5: if any emergency keyword is found in session, trigger mitate XRPC POST."
   [session-description keywords]
-  (let [lower (clojure.string/lower-case session-description)
-        hits  (filterv #(clojure.string/includes? lower (clojure.string/lower-case %)) keywords)]
+  (let [lower (kotoba.lang.text/lower session-description)
+        hits  (filterv #(kotoba.lang.text/includes? lower (kotoba.lang.text/lower %)) keywords)]
     (if (seq hits)
       {:escalate true  :matched-keywords hits :rule "G5"}
       {:escalate false :matched-keywords [] :rule "G5"})))
@@ -86,7 +87,7 @@
   "G15: encryptedPayloadCid must be present (no plaintext care details allowed)."
   [encrypted-payload-cid]
   (if (and (seq encrypted-payload-cid)
-           (clojure.string/starts-with? encrypted-payload-cid "ipfs://Qm"))
+           (kotoba.lang.text/starts-with? encrypted-payload-cid "ipfs://Qm"))
     {:ok true  :reason "encrypted payload CID valid (G15)"}
     {:ok false :reason "missing or invalid encrypted payload CID (G15 breach)"}))
 

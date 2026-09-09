@@ -9,7 +9,7 @@
   Message substring matches the Python docstring / RuntimeError text verbatim.
 
   ADR-2605261030."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.lang.text] [clojure.test :refer [deftest is testing]]
             [hagukumi.cells.child-daily-care.state-machine   :as cdc]
             [hagukumi.cells.chronic-continuity.state-machine :as cc]
             [hagukumi.cells.elder-companionship.state-machine :as ec]
@@ -24,7 +24,7 @@
     (f)
     false
     (catch clojure.lang.ExceptionInfo e
-      (and (clojure.string/includes? (ex-message e) "R0 scaffold")
+      (and (kotoba.lang.text/includes? (ex-message e) "R0 scaffold")
            (= :r0-scaffold (:status (ex-data e)))))))
 
 ;; ── child_daily_care ─────────────────────────────────────────────────────────
@@ -38,7 +38,7 @@
         (is (= :child-daily-care (:cell (ex-data e))))
         (is (= "ADR-2605261030" (:adr (ex-data e))))
         ;; message mirrors Python RuntimeError
-        (is (clojure.string/includes? (ex-message e) "pediatrician"))))))
+        (is (kotoba.lang.text/includes? (ex-message e) "pediatrician"))))))
 
 ;; ── chronic_continuity ───────────────────────────────────────────────────────
 
@@ -48,7 +48,7 @@
     (try (cc/solve {})
       (catch clojure.lang.ExceptionInfo e
         (is (= :chronic-continuity (:cell (ex-data e))))
-        (is (clojure.string/includes? (ex-message e) "mitate"))))))
+        (is (kotoba.lang.text/includes? (ex-message e) "mitate"))))))
 
 ;; ── elder_companionship ──────────────────────────────────────────────────────
 
@@ -58,7 +58,7 @@
     (try (ec/solve {})
       (catch clojure.lang.ExceptionInfo e
         (is (= :elder-companionship (:cell (ex-data e))))
-        (is (clojure.string/includes? (ex-message e) "geriatrician"))))))
+        (is (kotoba.lang.text/includes? (ex-message e) "geriatrician"))))))
 
 ;; ── meal_delivery ────────────────────────────────────────────────────────────
 
@@ -68,7 +68,7 @@
     (try (md/solve {})
       (catch clojure.lang.ExceptionInfo e
         (is (= :meal-delivery (:cell (ex-data e))))
-        (is (clojure.string/includes? (ex-message e) "mitsuho"))))))
+        (is (kotoba.lang.text/includes? (ex-message e) "mitsuho"))))))
 
 ;; ── respite_support ──────────────────────────────────────────────────────────
 
@@ -78,7 +78,7 @@
     (try (rs/solve {})
       (catch clojure.lang.ExceptionInfo e
         (is (= :respite-support (:cell (ex-data e))))
-        (is (clojure.string/includes? (ex-message e) "caregiver onboarding"))))))
+        (is (kotoba.lang.text/includes? (ex-message e) "caregiver onboarding"))))))
 
 ;; ── Python parity smoke ──────────────────────────────────────────────────────
 ;; Python: all 5 .solve() raise RuntimeError with "R0 scaffold" in message.
