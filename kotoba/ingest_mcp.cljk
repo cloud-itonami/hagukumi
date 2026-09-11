@@ -1,4 +1,4 @@
-#!/usr/bin/env bb
+#!/usr/bin/env kbb
 ;; hagukumi 育み — ingest seed.edn into a live kotoba node (cljc port of ingest_mcp.py).
 ;; ADR-2605261030.
 (ns hagukumi.kotoba.ingest-mcp
