@@ -29,7 +29,7 @@
   + TitheRouter 10% only — no fiat (G13). The platform holds no key; caregivers/guardians
   sign each attestation (G14). Compute-only R0; settlement stops at :intent (R1+ broadcasts).
 
-  Run:  bb --classpath 20-actors 20-actors/hagukumi/py/agent.clj"
+  Run:  bb --classpath 20-actors 20-actors/hagukumi/py/agent.cljk"
   (:require [kotoba.lang.text :as str]))
 
 ;; ── constants ──────────────────────────────────────────────────────────────────

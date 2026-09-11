@@ -1,0 +1,20 @@
+{:format :kotoba.cljk-origin/v1
+ :renamed-on "2026-09-11"
+ :decision "adr-2609111500-cljk-rename-all-clojure-source (com-junkawasaki/root 90-docs/adr; owner instruction 2026-09-11)"
+ :rule "value = the extension the file had before the rename. A path ending in .clj.cljk or .cljs.cljk kept it in the name because both platform files existed (or the plain target was taken)."
+ :origins
+ {"cells/child_daily_care/state_machine.cljk" ".cljc"
+  "cells/chronic_continuity/state_machine.cljk" ".cljc"
+  "cells/elder_companionship/state_machine.cljk" ".cljc"
+  "cells/meal_delivery/state_machine.cljk" ".cljc"
+  "cells/respite_support/state_machine.cljk" ".cljc"
+  "cells/test_state_machines.cljk" ".cljc"
+  "kotoba/ingest_mcp.cljk" ".cljc"
+  "methods/agent.cljk" ".cljc"
+  "methods/test_agent.cljk" ".cljc"
+  "methods/test_charter_gates.cljk" ".cljc"
+  "py/agent.cljk" ".clj"
+  "py/test_agent.cljk" ".clj"
+  "src/hagukumi/murakumo.cljk" ".cljc"
+  "test/hagukumi/murakumo_test.cljk" ".cljc"
+  "test/hagukumi/record_key_test.cljk" ".cljc"}}
