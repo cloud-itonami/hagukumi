@@ -1,4 +1,4 @@
-#!/usr/bin/env bb
+#!/usr/bin/env kbb
 ;; Clojure port of py/test_agent.py (hagukumi care actor — 23 tests).
 (ns hagukumi.py.test-agent
   "hagukumi 育み test harness. Verifies constitutional gates of ADR-2605261030:
