@@ -23,7 +23,7 @@
 
   Ground truth for each expectation below was read off the built namespace on
   main, not predicted from the source."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [hagukumi.murakumo :as m]))
 
 ;; The rkey grammar this actor targets: RFC 3986 unreserved characters.

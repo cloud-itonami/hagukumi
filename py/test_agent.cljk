@@ -10,7 +10,7 @@
     G16    pseudonym rotation (30-day threshold)
     G17    guardian consent for <14 care recipients
     G13/G14 USDC + TitheRouter 10% settlement, stops at :intent"
-  (:require [clojure.test :refer [deftest is run-tests]]
+  (:require [kotoba.test :refer [deftest is run-tests]]
             [hagukumi.py.agent :as agent]))
 
 ;; ── G1/G3 consent window ──────────────────────────────────────────────────────
@@ -192,5 +192,5 @@
 
 ;; ── runner ────────────────────────────────────────────────────────────────────
 (when (= *file* (System/getProperty "babashka.file"))
-  (let [{:keys [fail error]} (clojure.test/run-tests 'hagukumi.py.test-agent)]
+  (let [{:keys [fail error]} (kotoba.test/run-tests 'hagukumi.py.test-agent)]
     (System/exit (if (zero? (+ fail error)) 0 1))))
