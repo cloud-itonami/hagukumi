@@ -9,7 +9,7 @@
   Message substring matches the Python docstring / RuntimeError text verbatim.
 
   ADR-2605261030."
-  (:require [kotoba.lang.text] [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.lang.text] [kotoba.test :refer [deftest is testing]]
             [hagukumi.cells.child-daily-care.state-machine   :as cdc]
             [hagukumi.cells.chronic-continuity.state-machine :as cc]
             [hagukumi.cells.elder-companionship.state-machine :as ec]

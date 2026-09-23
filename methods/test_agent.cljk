@@ -1,7 +1,7 @@
 (ns hagukumi.methods.test-agent
   "hagukumi 育み — agent gate tests (offline, no kotoba host, no network, no LLM).
   ADR-2605261030. 1:1 port of py/test_agent.py — expected values copied verbatim."
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [hagukumi.methods.agent :as agent]))
 
 ;; ── G1/G3 — consent window ────────────────────────────────────────────────────
