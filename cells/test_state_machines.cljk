@@ -9,7 +9,7 @@
   Message substring matches the Python docstring / RuntimeError text verbatim.
 
   ADR-2605261030."
-  (:require [kotoba.lang.text] [kotoba.test :refer [deftest is testing]]
+  (:require [kotoba.lang.error :as kerror] [kotoba.lang.text] [kotoba.test :refer [deftest is testing]]
             [hagukumi.cells.child-daily-care.state-machine   :as cdc]
             [hagukumi.cells.chronic-continuity.state-machine :as cc]
             [hagukumi.cells.elder-companionship.state-machine :as ec]
@@ -23,7 +23,7 @@
   (try
     (f)
     false
-    (catch clojure.lang.ExceptionInfo e
+    (catch kerror/ExceptionInfo e
       (and (kotoba.lang.text/includes? (ex-message e) "R0 scaffold")
            (= :r0-scaffold (:status (ex-data e)))))))
 
@@ -34,7 +34,7 @@
     (is (throws-r0-scaffold? #(cdc/solve {})))
     ;; cell and adr metadata present
     (try (cdc/solve {})
-      (catch clojure.lang.ExceptionInfo e
+      (catch kerror/ExceptionInfo e
         (is (= :child-daily-care (:cell (ex-data e))))
         (is (= "ADR-2605261030" (:adr (ex-data e))))
         ;; message mirrors Python RuntimeError
@@ -46,7 +46,7 @@
   (testing "chronic_continuity solve raises R0 scaffold ex-info (PARITY)"
     (is (throws-r0-scaffold? #(cc/solve {})))
     (try (cc/solve {})
-      (catch clojure.lang.ExceptionInfo e
+      (catch kerror/ExceptionInfo e
         (is (= :chronic-continuity (:cell (ex-data e))))
         (is (kotoba.lang.text/includes? (ex-message e) "mitate"))))))
 
@@ -56,7 +56,7 @@
   (testing "elder_companionship solve raises R0 scaffold ex-info (PARITY)"
     (is (throws-r0-scaffold? #(ec/solve {})))
     (try (ec/solve {})
-      (catch clojure.lang.ExceptionInfo e
+      (catch kerror/ExceptionInfo e
         (is (= :elder-companionship (:cell (ex-data e))))
         (is (kotoba.lang.text/includes? (ex-message e) "geriatrician"))))))
 
@@ -66,7 +66,7 @@
   (testing "meal_delivery solve raises R0 scaffold ex-info (PARITY)"
     (is (throws-r0-scaffold? #(md/solve {})))
     (try (md/solve {})
-      (catch clojure.lang.ExceptionInfo e
+      (catch kerror/ExceptionInfo e
         (is (= :meal-delivery (:cell (ex-data e))))
         (is (kotoba.lang.text/includes? (ex-message e) "mitsuho"))))))
 
@@ -76,7 +76,7 @@
   (testing "respite_support solve raises R0 scaffold ex-info (PARITY)"
     (is (throws-r0-scaffold? #(rs/solve {})))
     (try (rs/solve {})
-      (catch clojure.lang.ExceptionInfo e
+      (catch kerror/ExceptionInfo e
         (is (= :respite-support (:cell (ex-data e))))
         (is (kotoba.lang.text/includes? (ex-message e) "caregiver onboarding"))))))
 
