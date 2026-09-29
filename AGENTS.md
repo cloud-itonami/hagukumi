@@ -1,4 +1,4 @@
-# 20-actors/hagukumi — CLAUDE.md
+# 20-actors/hagukumi — AGENTS.md
 
 ## Identity
 
@@ -105,4 +105,4 @@ Expected: all 5 imports raise `RuntimeError` with "R0 scaffold" message.
 - `/90-docs/adr/2605261000-labor-liberation-transition-mechanism.md` — L4 gate
 - `/90-docs/adr/2605181100-mst-encrypted-records-signal-keywrap.md` — privacy envelope
 - `/90-docs/adr/2605260100-mitate-diagnostic-routing-charter.md` — cross-actor sibling
-- `/CLAUDE.md` — Religious-corp status table
+- `/AGENTS.md` — Religious-corp status table

@@ -99,4 +99,4 @@ com.etzhayyim.hagukumi.{
 - `/90-docs/adr/2605261030-hagukumi-care-tier-b-actor-r0.md` — Master ADR
 - `/90-docs/adr/2605181100-mst-encrypted-records-signal-keywrap.md` — privacy envelope
 - `/90-docs/adr/2605260100-mitate-diagnostic-routing-charter.md` — cross-actor sibling
-- `/CLAUDE.md` — Religious-corp status table
+- `/AGENTS.md` — Religious-corp status table

@@ -14,7 +14,7 @@
   - the output charset is **closed**. A widened character class still passes
     every happy-path example; only hostile input separates them.
   - **only the empty input becomes \"unknown\"**. Whitespace-only input becomes
-    \"---\". This is the boundary case CLAUDE.md's fifth question asks for:
+    \"---\". This is the boundary case AGENTS.md's fifth question asks for:
     `blank?` applied to the *original* rather than the *cleaned* string is
     green on every other input in this file.
   - **every branch of the rkey fallback chain is sanitized**, not just the
